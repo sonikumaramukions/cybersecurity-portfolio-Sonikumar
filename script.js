@@ -1,308 +1,221 @@
-// ===== ENHANCED TYPING EFFECT =====
-<<<<<<< HEAD
-(function(){
-  const el = document.querySelector('.typing');
-  if(!el) return;
-=======
 (function () {
-  const el = document.querySelector('.typing');
-  if (!el) return;
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-  const text = el.getAttribute('data-text') || '';
-  let i = 0;
-  let isDeleting = false;
-  let currentText = '';
-<<<<<<< HEAD
-  
-=======
+  // ===== ENHANCED TYPING EFFECT =====
+  const typingEl = document.querySelector('.typing');
+  if (typingEl) {
+    const text = typingEl.getAttribute('data-text') || '';
+    let i = 0;
+    let isDeleting = false;
+    let currentText = '';
 
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-  function typeWriter() {
-    if (isDeleting) {
-      currentText = text.substring(0, currentText.length - 1);
-    } else {
-      currentText = text.substring(0, i + 1);
-    }
-<<<<<<< HEAD
-    
-    el.textContent = currentText;
-    
-    let typeSpeed = 100;
-    
-    if (isDeleting) {
-      typeSpeed /= 2;
-    }
-    
-=======
+    function typeWriter() {
+      if (isDeleting) {
+        currentText = text.substring(0, currentText.length - 1);
+      } else {
+        currentText = text.substring(0, i + 1);
+      }
 
-    el.textContent = currentText;
+      typingEl.textContent = currentText;
 
-    let typeSpeed = 100;
+      let typeSpeed = 100;
+      if (isDeleting) typeSpeed /= 2;
 
-    if (isDeleting) {
-      typeSpeed /= 2;
+      if (!isDeleting && currentText === text) {
+        typeSpeed = 2000; // pause at full text
+        isDeleting = true;
+      } else if (isDeleting && currentText === '') {
+        isDeleting = false;
+        i = 0;
+        typeSpeed = 500; // pause before restart
+      } else if (!isDeleting) {
+        i++;
+      }
+
+      setTimeout(typeWriter, typeSpeed);
     }
 
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-    if (!isDeleting && currentText === text) {
-      typeSpeed = 2000; // Pause at end
-      isDeleting = true;
-    } else if (isDeleting && currentText === '') {
-      isDeleting = false;
-      i = 0;
-      typeSpeed = 500; // Pause before restart
-    } else {
-      if (!isDeleting) i++;
-    }
-<<<<<<< HEAD
-    
-    setTimeout(typeWriter, typeSpeed);
-  }
-  
-=======
-
-    setTimeout(typeWriter, typeSpeed);
+    typeWriter();
   }
 
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-  typeWriter();
-})();
+  // ===== SMOOTH SCROLLING =====
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (!href || href === '#') return;
 
-// ===== SMOOTH SCROLLING =====
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-});
-
-// ===== UPDATE FOOTER YEAR =====
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// ===== ENHANCED PROJECT DATA =====
-const projects = [
-<<<<<<< HEAD
-
-  { 
-=======
-  {
-    title: "Vulnerability Assessment and Penetration Testing on college Student information system",
-    desc: "Conducted a vulnerability analysis on the college Student information system using Burp Suite , Nmap  and manual vulnerability testing.",
-    stack: "Burp Suite · Nmap · Manual vulnerability testing",
-    link: "Confidential",
-    category: "cybersecurity",
-    featured: true
-  },
-  {
-    title: "Secure Chat Application",
-    desc: "A fully secure, end-to-end encrypted web chat application with advanced security features including URL scanning, file sharing, and robust authentication",
-    stack: "Python · cryptography · AES encryption · HTML · CSS · JavaScript",
-    link: "https://github.com/sonikumaramukions/secure_chat_application",
-    category: "cybersecurity",
-    featured: true
-  },
-  {
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-    title: "codealpha_network_packet_sniffer",
-    desc: "This is a basic network packet sniffer built using Python and Scapy. It captures and displays live network traffic, including IP, TCP, UDP, and ICMP packet details.",
-    stack: "Python · Scapy · Network Analysis",
-    link: "https://github.com/sonikumaramukions/codealpha_Tasks_network_packet_sniffer",
-    category: "cybersecurity",
-    featured: true
-  },
-<<<<<<< HEAD
-  { 
-=======
-  {
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-    title: "CodeAlpha – Secure Coding Review (Task 3)",
-    desc: "Initially, I developed and tested the vulnerable Python application in the terminal. Later, with the help of ChatGPT, I converted the script into a live Flask web application to simulate and demonstrate vulnerabilities like SQL Injection in a real browser environment.",
-    stack: "Python · flask(for web anaylisis) · Manual vulnerability testing",
-    link: "https://github.com/sonikumaramukions/codealpha_Task_vulnerable_app",
-    category: "cybersecurity",
-    featured: true
-  },
-<<<<<<< HEAD
-  { 
-    title: "Text Detection in Images using Python", 
-    desc: "Advanced text detection and extraction from images using Tesseract OCR and OpenCV. This cybersecurity tool can be used for analyzing images in security investigations and extracting text from screenshots or documents.", 
-    stack: "Python · OpenCV · Tesseract OCR · Computer Vision", 
-=======
-  {
-    title: "Text Detection in Images using Python",
-    desc: "Advanced text detection and extraction from images using Tesseract OCR and OpenCV. This cybersecurity tool can be used for analyzing images in security investigations and extracting text from screenshots or documents.",
-    stack: "Python · OpenCV · Tesseract OCR · Computer Vision",
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-    link: "https://github.com/sonikumaramukions/Text_detection_in_image_using_python",
-    category: "AI/ML",
-    featured: true
-  },
-<<<<<<< HEAD
-  { 
-    title: "Shopkatha – Lending Management System", 
-    desc: "Developed a web application for shopkeepers to manage customer lending records with Aadhaar verification, WhatsApp contact integration, and lending history tracking.", 
-    stack: "PHP · MySQL · HTML · CSS", 
-=======
-  {
-    title: "Shopkatha – Lending Management System",
-    desc: "Developed a web application for shopkeepers to manage customer lending records with Aadhaar verification, WhatsApp contact integration, and lending history tracking.",
-    stack: "PHP · MySQL · HTML · CSS",
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-    link: "https://github.com/sonikumaramukions/Shopkeeper_management_system-Shopkatha",
-    category: "web",
-    featured: false
-  },
-<<<<<<< HEAD
-  { 
-    title: "BlockVault – Blockchain Document Storage System", 
-    desc: "Decentralized file management system that stores documents in IPFS and metadata in Ethereum smart contracts. Integrated MetaMask for user authentication and Ganache for testing.", 
-    stack: "Solidity · JavaScript · IPFS", 
-=======
-  {
-    title: "BlockVault – Blockchain Document Storage System",
-    desc: "Decentralized file management system that stores documents in IPFS and metadata in Ethereum smart contracts. Integrated MetaMask for user authentication and Ganache for testing.",
-    stack: "Solidity · JavaScript · IPFS",
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-    link: "https://github.com/sonikumaramukions/IPFS_with_Solidity",
-    category: "blockchain",
-    featured: true
-  },
-<<<<<<< HEAD
-  { 
-    title: "Speech Recognition and Transcription Tool", 
-    desc: "Python tool to convert live speech to text using speech recognition and AI-based audio parsing. Useful for security monitoring and audio analysis in cybersecurity investigations.", 
-    stack: "Python · SpeechRecognition", 
-=======
-  {
-    title: "Speech Recognition and Transcription Tool",
-    desc: "Python tool to convert live speech to text using speech recognition and AI-based audio parsing. Useful for security monitoring and audio analysis in cybersecurity investigations.",
-    stack: "Python · SpeechRecognition",
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-    link: "https://github.com/sonikumaramukions/Speechtotext",
-    category: "web",
-    featured: false
-  },
-<<<<<<< HEAD
-  { 
-    title: "Student Performance Lookup System", 
-    desc: "Database management project with 6 SQL tables linked through PHP. Demonstrates secure data handling and database security practices.", 
-    stack: "PHP · MySQL · HTML · CSS · XAMPP", 
-=======
-  {
-    title: "Student Performance Lookup System",
-    desc: "Database management project with 6 SQL tables linked through PHP. Demonstrates secure data handling and database security practices.",
-    stack: "PHP · MySQL · HTML · CSS · XAMPP",
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-    link: "https://github.com/sonikumaramukions/DBMS_PROJECT_STUDENT_PERFORMANCE_LOOKUP_PROJECT",
-    category: "web",
-    featured: false
-  }
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-];
-
-// ===== PROJECT FILTERING SYSTEM =====
-function createProjectFilters() {
-  const filterContainer = document.createElement('div');
-  filterContainer.className = 'project-filters';
-  filterContainer.innerHTML = `
-    <div class="filter-buttons">
-      <button class="filter-btn active" data-filter="all">All Projects</button>
-      <button class="filter-btn" data-filter="cybersecurity">Cybersecurity</button>
-      <button class="filter-btn" data-filter="web">Web Development</button>
-      <button class="filter-btn" data-filter="ai-ml">AI/ML</button>
-      <button class="filter-btn" data-filter="blockchain">Blockchain</button>
-    </div>
-  `;
-<<<<<<< HEAD
-  
-  const projectSection = document.getElementById('projects');
-  const projectGrid = document.getElementById('project-grid');
-  projectSection.insertBefore(filterContainer, projectGrid);
-  
-=======
-
-  const projectSection = document.getElementById('projects');
-  const projectGrid = document.getElementById('project-grid');
-  projectSection.insertBefore(filterContainer, projectGrid);
-
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-  // Add filter functionality
-  const filterBtns = filterContainer.querySelectorAll('.filter-btn');
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Remove active class from all buttons
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-<<<<<<< HEAD
-      
-=======
-
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-      const filter = btn.getAttribute('data-filter');
-      filterProjects(filter);
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
   });
-}
 
-function filterProjects(category) {
-  const projectCards = document.querySelectorAll('.card');
-  projectCards.forEach(card => {
-    const projectData = card.dataset;
-    let shouldShow = false;
-<<<<<<< HEAD
-    
-=======
+  // ===== UPDATE FOOTER YEAR =====
+  const yearEl = document.getElementById('year');
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-    if (category === 'all') {
-      shouldShow = true;
-    } else if (category === 'ai-ml' && projectData.category === 'AI/ML') {
-      shouldShow = true;
-    } else if (projectData.category === category) {
-      shouldShow = true;
+  // ===== PROJECT DATA =====
+  const projects = [
+    {
+      title:
+        'Vulnerability Assessment and Penetration Testing on College Student Information System',
+      desc:
+        'Conducted a vulnerability analysis on the college Student Information System using Burp Suite, Nmap and manual testing.',
+      stack: 'Burp Suite · Nmap · Manual vulnerability testing',
+      link: 'Confidential',
+      category: 'cybersecurity',
+      featured: true
+    },
+    {
+      title: 'Secure Chat Application',
+      desc:
+        'End‑to‑end encrypted web chat application with URL scanning, file sharing and robust authentication.',
+      stack: 'Python · cryptography · AES · HTML · CSS · JavaScript',
+      link: 'https://github.com/sonikumaramukions/secure_chat_application',
+      category: 'cybersecurity',
+      featured: true
+    },
+    {
+      title: 'codealpha_network_packet_sniffer',
+      desc:
+        'Basic network packet sniffer built using Python and Scapy. Captures and displays live network traffic.',
+      stack: 'Python · Scapy · Network Analysis',
+      link:
+        'https://github.com/sonikumaramukions/codealpha_Tasks_network_packet_sniffer',
+      category: 'cybersecurity',
+      featured: true
+    },
+    {
+      title: 'CodeAlpha – Secure Coding Review (Task 3)',
+      desc:
+        'Vulnerable Python app converted into a Flask web app to demonstrate issues like SQL Injection in a browser.',
+      stack: 'Python · Flask · Manual vulnerability testing',
+      link:
+        'https://github.com/sonikumaramukions/codealpha_Task_vulnerable_app',
+      category: 'cybersecurity',
+      featured: true
+    },
+    {
+      title: 'Text Detection in Images using Python',
+      desc:
+        'Text detection and extraction from images using Tesseract OCR and OpenCV for security investigations.',
+      stack: 'Python · OpenCV · Tesseract OCR · Computer Vision',
+      link:
+        'https://github.com/sonikumaramukions/Text_detection_in_image_using_python',
+      category: 'AI/ML',
+      featured: true
+    },
+    {
+      title: 'Shopkatha – Lending Management System',
+      desc:
+        'Web application for shopkeepers to manage customer lending records with Aadhaar verification and history.',
+      stack: 'PHP · MySQL · HTML · CSS',
+      link:
+        'https://github.com/sonikumaramukions/Shopkeeper_management_system-Shopkatha',
+      category: 'web',
+      featured: false
+    },
+    {
+      title: 'BlockVault – Blockchain Document Storage System',
+      desc:
+        'Decentralized document management using IPFS for files and Ethereum smart contracts for metadata.',
+      stack: 'Solidity · JavaScript · IPFS',
+      link: 'https://github.com/sonikumaramukions/IPFS_with_Solidity',
+      category: 'blockchain',
+      featured: true
+    },
+    {
+      title: 'Speech Recognition and Transcription Tool',
+      desc:
+        'Python tool to convert live speech to text, useful for security monitoring and audio analysis.',
+      stack: 'Python · SpeechRecognition',
+      link: 'https://github.com/sonikumaramukions/Speechtotext',
+      category: 'web',
+      featured: false
+    },
+    {
+      title: 'Student Performance Lookup System',
+      desc:
+        'Database project with multiple SQL tables and PHP front‑end, demonstrating secure data handling.',
+      stack: 'PHP · MySQL · HTML · CSS · XAMPP',
+      link:
+        'https://github.com/sonikumaramukions/DBMS_PROJECT_STUDENT_PERFORMANCE_LOOKUP_PROJECT',
+      category: 'web',
+      featured: false
     }
-<<<<<<< HEAD
-    
-=======
+  ];
 
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-    if (shouldShow) {
-      card.style.display = 'block';
-      card.style.animation = 'fadeIn 0.5s ease-in';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
+  // ===== PROJECT FILTERING SYSTEM =====
+  function createProjectFilters() {
+    const projectSection = document.getElementById('projects');
+    const projectGrid = document.getElementById('project-grid');
+    if (!projectSection || !projectGrid) return;
 
-// ===== ENHANCED PROJECT RENDERING =====
-function renderProjects() {
-  const grid = document.getElementById('project-grid');
-  if (grid) {
+    const filterContainer = document.createElement('div');
+    filterContainer.className = 'project-filters';
+    filterContainer.innerHTML = `
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="cybersecurity">Cybersecurity</button>
+        <button class="filter-btn" data-filter="web">Web Development</button>
+        <button class="filter-btn" data-filter="ai-ml">AI/ML</button>
+        <button class="filter-btn" data-filter="blockchain">Blockchain</button>
+      </div>
+    `;
+
+    projectSection.insertBefore(filterContainer, projectGrid);
+
+    const filterBtns = filterContainer.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        filterProjects(filter);
+      });
+    });
+  }
+
+  function filterProjects(category) {
+    const projectCards = document.querySelectorAll('.card[data-category]');
+    projectCards.forEach(card => {
+      const cat = card.dataset.category;
+      let show = false;
+
+      if (category === 'all') {
+        show = true;
+      } else if (category === 'ai-ml' && cat === 'AI/ML') {
+        show = true;
+      } else if (cat === category) {
+        show = true;
+      }
+
+      if (show) {
+        card.style.display = 'block';
+        card.style.animation = 'fadeIn 0.5s ease-in';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // ===== PROJECT RENDERING =====
+  function renderProjects() {
+    const grid = document.getElementById('project-grid');
+    if (!grid) return;
+
     projects.forEach(p => {
       const card = document.createElement('div');
       card.className = 'card';
       card.dataset.category = p.category;
-      card.dataset.featured = p.featured;
-<<<<<<< HEAD
-      
-      const featuredBadge = p.featured ? '<span class="featured-badge">⭐ Featured</span>' : '';
-      
-=======
+      card.dataset.featured = String(p.featured);
 
-      const featuredBadge = p.featured ? '<span class="featured-badge">⭐ Featured</span>' : '';
+      const featuredBadge = p.featured
+        ? '<span class="featured-badge">⭐ Featured</span>'
+        : '';
 
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
       card.innerHTML = `
         ${featuredBadge}
         <h3>${p.title}</h3>
@@ -310,176 +223,145 @@ function renderProjects() {
         <p class="stack">${p.stack}</p>
         <p><a href="${p.link}" target="_blank" rel="noreferrer">GitHub / Demo →</a></p>
       `;
+
       grid.appendChild(card);
     });
   }
-}
 
-// ===== SKILL ANIMATIONS =====
-function animateSkills() {
-  const skillCards = document.querySelectorAll('.skill-card');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.animation = 'slideInUp 0.6s ease-out';
-        observer.unobserve(entry.target);
-      }
+  // ===== SKILL ANIMATIONS =====
+  function animateSkills() {
+    const skillCards = document.querySelectorAll('.skill-card');
+    if (!skillCards.length) return;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = 'slideInUp 0.6s ease-out';
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    skillCards.forEach(card => observer.observe(card));
+  }
+
+  // ===== NAVIGATION HIGHLIGHTING =====
+  function highlightActiveSection() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav .links a');
+    if (!sections.length || !navLinks.length) return;
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        if (window.pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+          link.classList.add('active');
+        }
+      });
     });
-  }, { threshold: 0.1 });
-<<<<<<< HEAD
-  
-=======
+  }
 
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-  skillCards.forEach(card => observer.observe(card));
-}
+  // ===== THEME TOGGLE (OPTIONAL) =====
+  function initThemeToggle() {
+    const nav = document.querySelector('.nav-inner');
+    if (!nav) return;
 
-// ===== NAVIGATION HIGHLIGHTING =====
-function highlightActiveSection() {
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav .links a');
-<<<<<<< HEAD
-  
-=======
+    const themeToggle = document.createElement('button');
+    themeToggle.className = 'theme-toggle';
+    themeToggle.innerHTML = '🌙';
+    themeToggle.title = 'Toggle theme';
 
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop;
-      const sectionHeight = section.clientHeight;
-      if (pageYOffset >= sectionTop - 200) {
-        current = section.getAttribute('id');
-      }
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      themeToggle.innerHTML = document.body.classList.contains('light-theme')
+        ? '☀️'
+        : '🌙';
     });
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
+    nav.appendChild(themeToggle);
+  }
+
+  // ===== CONTACT FORM HANDLING =====
+  function initContactForm() {
+    const form = document.getElementById('contactForm');
+    if (!form) return;
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      const name = String(formData.get('name') || '').trim();
+      const email = String(formData.get('email') || '').trim();
+      const subject = String(formData.get('subject') || '').trim();
+      const message = String(formData.get('message') || '').trim();
+
+      if (!name || !email || !subject || !message) {
+        showNotification('Please fill in all required fields.', 'error');
+        return;
       }
-    });
-  });
-}
 
-// ===== THEME TOGGLE (FOR FUTURE USE) =====
-function initThemeToggle() {
-  const themeToggle = document.createElement('button');
-  themeToggle.className = 'theme-toggle';
-  themeToggle.innerHTML = '🌙';
-  themeToggle.title = 'Toggle theme';
-<<<<<<< HEAD
-  
-=======
+      if (!isValidEmail(email)) {
+        showNotification('Please enter a valid email address.', 'error');
+        return;
+      }
 
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-  themeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('light-theme');
-    themeToggle.innerHTML = document.body.classList.contains('light-theme') ? '☀️' : '🌙';
-  });
-<<<<<<< HEAD
-  
-=======
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Opening email client...';
+      submitBtn.disabled = true;
 
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-  const nav = document.querySelector('.nav-inner');
-  nav.appendChild(themeToggle);
-}
+      const emailBody = `Hello Soni Kumar,
 
-// ===== CONTACT FORM HANDLING =====
-function initContactForm() {
-  const form = document.getElementById('contactForm');
-  if (!form) return;
-<<<<<<< HEAD
-  
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-=======
+You have received a message from your portfolio website:
 
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
+Name: ${name}
+Email: ${email}
+Subject: ${subject}
 
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-    // Get form data
-    const formData = new FormData(form);
-    const name = formData.get('name').trim();
-    const email = formData.get('email').trim();
-    const subject = formData.get('subject').trim();
-    const message = formData.get('message').trim();
-<<<<<<< HEAD
-    
-=======
+Message:
+${message}
 
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-    // Basic validation
-    if (!name || !email || !subject || !message) {
-      showNotification('Please fill in all required fields.', 'error');
-      return;
-    }
-<<<<<<< HEAD
-    
-=======
+---
+This message was sent from your portfolio contact form.`;
 
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-    if (!isValidEmail(email)) {
-      showNotification('Please enter a valid email address.', 'error');
-      return;
-    }
-<<<<<<< HEAD
-    
-=======
+      const mailtoLink = `mailto:sonikumaroutlook@gmail.com?subject=${encodeURIComponent(
+        'Portfolio Contact: ' + subject
+      )}&body=${encodeURIComponent(emailBody)}`;
 
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-    // Show loading state
-    const submitBtn = form.querySelector('button[type="submit"]');
-    const originalText = submitBtn.textContent;
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
-<<<<<<< HEAD
-    
-    // Simulate form submission (replace with actual backend integration)
-    setTimeout(() => {
-      // Reset form
-      form.reset();
-      
-      // Reset button
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-      
-      // Show success message
-      showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-      
-      // Log form data (for development - remove in production)
-=======
+      try {
+        window.location.href = mailtoLink;
 
-    // Create mailto link with form data
-    const emailBody = `Hello Soni Kumar,\n\nYou have received a message from your portfolio website:\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}\n\n---\nThis message was sent from your portfolio contact form.`;
-    const mailtoLink = `mailto:sonikumaroutlook@gmail.com?subject=${encodeURIComponent('Portfolio Contact: ' + subject)}&body=${encodeURIComponent(emailBody)}`;
-
-    // Open email client
-    try {
-      window.location.href = mailtoLink;
-      
-      // Reset form after a short delay
-      setTimeout(() => {
-        form.reset();
+        setTimeout(() => {
+          form.reset();
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          showNotification(
+            'Opening your email client... Please send the email to complete the process.',
+            'success'
+          );
+        }, 500);
+      } catch (err) {
+        console.error('Error opening mail client', err);
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
-        showNotification('Opening your email client... Please send the email to complete the process.', 'success');
-      }, 500);
-    } catch (error) {
-      // Fallback: show form data and instructions
-      submitBtn.textContent = originalText;
-      submitBtn.disabled = false;
-      showNotification('Please email me directly at sonikumaroutlook@gmail.com', 'info');
-      
-      // Log form data for manual processing
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
+        showNotification(
+          'Please email me directly at sonikumaroutlook@gmail.com.',
+          'info'
+        );
+      }
+
       console.log('Contact Form Submission:', {
         name,
         email,
@@ -487,260 +369,228 @@ function initContactForm() {
         message,
         timestamp: new Date().toISOString()
       });
-<<<<<<< HEAD
-      
-    }, 2000);
-=======
-    }
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
+    });
+  }
+
+  function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }
+
+  // ===== NOTIFICATIONS =====
+  function showNotification(message, type = 'info') {
+    const existing = document.querySelector('.notification');
+    if (existing) existing.remove();
+
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+      <div class="notification-content">
+        <span class="notification-icon">${
+          type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️'
+        }</span>
+        <span class="notification-message">${message}</span>
+        <button class="notification-close">×</button>
+      </div>
+    `;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+      notification.classList.add('show');
+    }, 100);
+
+    setTimeout(() => {
+      hideNotification(notification);
+    }, 5000);
+
+    notification
+      .querySelector('.notification-close')
+      .addEventListener('click', () => hideNotification(notification));
+  }
+
+  function hideNotification(notification) {
+    notification.classList.remove('show');
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.remove();
+      }
+    }, 300);
+  }
+
+  // ===== INITIALIZE ALL FEATURES =====
+  document.addEventListener('DOMContentLoaded', () => {
+    renderProjects();
+    createProjectFilters();
+    animateSkills();
+    highlightActiveSection();
+    initContactForm();
+    // initThemeToggle(); // enable if you want the theme toggle button
   });
-}
 
-function isValidEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return emailRegex.test(email);
-}
-
-function showNotification(message, type = 'info') {
-  // Remove existing notifications
-  const existingNotification = document.querySelector('.notification');
-  if (existingNotification) {
-    existingNotification.remove();
-  }
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-  // Create notification element
-  const notification = document.createElement('div');
-  notification.className = `notification notification-${type}`;
-  notification.innerHTML = `
-    <div class="notification-content">
-      <span class="notification-icon">${type === 'success' ? '✅' : type === 'error' ? '❌' : 'ℹ️'}</span>
-      <span class="notification-message">${message}</span>
-      <button class="notification-close">×</button>
-    </div>
-  `;
-<<<<<<< HEAD
-  
-  // Add to page
-  document.body.appendChild(notification);
-  
-=======
-
-  // Add to page
-  document.body.appendChild(notification);
-
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-  // Show notification
-  setTimeout(() => {
-    notification.classList.add('show');
-  }, 100);
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-  // Auto hide after 5 seconds
-  setTimeout(() => {
-    hideNotification(notification);
-  }, 5000);
-<<<<<<< HEAD
-  
-=======
-
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-  // Close button functionality
-  const closeBtn = notification.querySelector('.notification-close');
-  closeBtn.addEventListener('click', () => {
-    hideNotification(notification);
-  });
-}
-
-function hideNotification(notification) {
-  notification.classList.remove('show');
-  setTimeout(() => {
-    if (notification.parentNode) {
-      notification.remove();
+  // ===== ADD CSS ANIMATIONS / UTIL STYLES =====
+  const extraStyle = document.createElement('style');
+  extraStyle.textContent = `
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-  }, 300);
-}
 
-// ===== INITIALIZE ALL FEATURES =====
-<<<<<<< HEAD
-document.addEventListener('DOMContentLoaded', function() {
-=======
-document.addEventListener('DOMContentLoaded', function () {
->>>>>>> d63d731 (Add initial cybersecurity portfolio website)
-  renderProjects();
-  createProjectFilters();
-  animateSkills();
-  highlightActiveSection();
-  initContactForm();
-  // initThemeToggle(); // Uncomment when you want to add theme toggle
-});
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-// ===== ADD CSS ANIMATIONS =====
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  @keyframes slideInUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  
-  .project-filters {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .filter-buttons {
-    display: flex;
-    gap: 10px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  
-  .filter-btn {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    color: var(--fg);
-    padding: 8px 16px;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 0.9rem;
-  }
-  
-  .filter-btn:hover,
-  .filter-btn.active {
-    background: var(--glow1);
-    color: var(--bg);
-    border-color: var(--glow1);
-  }
-  
-  .featured-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: linear-gradient(90deg, var(--glow1), var(--glow2));
-    color: var(--bg);
-    padding: 4px 8px;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-  
-  .card {
-    position: relative;
-  }
-  
-  .nav .links a.active {
-    color: var(--glow1);
-    text-decoration: underline;
-  }
-  
-  .theme-toggle {
-    background: none;
-    border: 1px solid var(--line);
-    color: var(--fg);
-    padding: 8px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-size: 1.2rem;
-  }
-  
-  .theme-toggle:hover {
-    background: var(--panel);
-    border-color: var(--glow1);
-  }
-  
-  /* Notification styles */
-  .notification {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    transform: translateX(400px);
-    transition: transform 0.3s ease;
-    max-width: 350px;
-  }
-  
-  .notification.show {
-    transform: translateX(0);
-  }
-  
-  .notification-content {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .notification-icon {
-    font-size: 1.2rem;
-    flex-shrink: 0;
-  }
-  
-  .notification-message {
-    flex: 1;
-    color: var(--fg);
-    font-size: 0.9rem;
-    line-height: 1.4;
-  }
-  
-  .notification-close {
-    background: none;
-    border: none;
-    color: var(--muted);
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: color 0.3s ease;
-  }
-  
-  .notification-close:hover {
-    color: var(--fg);
-  }
-  
-  .notification-success {
-    border-left: 4px solid var(--accent);
-  }
-  
-  .notification-error {
-    border-left: 4px solid #ff5f56;
-  }
-  
-  .notification-info {
-    border-left: 4px solid var(--glow1);
-  }
-  
-  @media (max-width: 768px) {
-    .notification {
+    .project-filters {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .filter-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      color: var(--fg);
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: var(--glow1);
+      color: var(--bg);
+      border-color: var(--glow1);
+    }
+
+    .featured-badge {
+      position: absolute;
+      top: 10px;
       right: 10px;
-      left: 10px;
-      max-width: none;
-      transform: translateY(-100px);
+      background: linear-gradient(90deg, var(--glow1), var(--glow2));
+      color: var(--bg);
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 600;
     }
-    
+
+    .card {
+      position: relative;
+    }
+
+    .nav .links a.active {
+      color: var(--glow1);
+      text-decoration: underline;
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--fg);
+      padding: 8px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.2rem;
+      margin-left: 8px;
+    }
+
+    .theme-toggle:hover {
+      background: var(--panel);
+      border-color: var(--glow1);
+    }
+
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      transform: translateX(400px);
+      transition: transform 0.3s ease;
+      max-width: 350px;
+    }
+
     .notification.show {
-      transform: translateY(0);
+      transform: translateX(0);
     }
-  }
-`;
-document.head.appendChild(style);
+
+    .notification-content {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .notification-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .notification-message {
+      flex: 1;
+      color: var(--fg);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    .notification-close {
+      background: none;
+      border: none;
+      color: var(--muted);
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: color 0.3s ease;
+    }
+
+    .notification-close:hover {
+      color: var(--fg);
+    }
+
+    .notification-success {
+      border-left: 4px solid var(--accent);
+    }
+
+    .notification-error {
+      border-left: 4px solid #ff5f56;
+    }
+
+    .notification-info {
+      border-left: 4px solid var(--glow1);
+    }
+
+    @media (max-width: 768px) {
+      .notification {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+        transform: translateY(-100px);
+      }
+
+      .notification.show {
+        transform: translateY(0);
+      }
+    }
+  `;
+  document.head.appendChild(extraStyle);
+})();
+
+
